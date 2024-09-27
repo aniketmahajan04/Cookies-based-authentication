@@ -5,7 +5,7 @@ const JWT_SECRET = "hiidjifjiei22";
 const mongoose = require("mongoose");
 const { userModel, todoModel } = require("./db");
 
-const uri = "mongodb+srv://admin:GW2cbw9PcShLBqDR@cluster0.uxc7g.mongodb.net/todo-app2";
+const uri = "";
 mongoose.connect(uri)
 .then( () => {
     console.log("Connected to DB");
