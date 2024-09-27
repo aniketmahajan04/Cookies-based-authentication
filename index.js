@@ -61,10 +61,10 @@ app.post("/signin", async function(req, res) {
 });
 
 function auth(req, res, next) {
-    const token = req.cookie.auth_token;
+    const token = req.cookies.token;
     if (!token) {
         return res.status(401).json({
-            msg: "Unuthorized"
+            msg: "Unauthorized"
         });
     } 
     try{
@@ -75,5 +75,24 @@ function auth(req, res, next) {
         console.error("Something went wrogn", err);
     }
 }
+
+app.get("/users", auth, async function(req, res) {
+    try {
+        const users = await userModel.find({});
+        if (!users.length) {
+            return res.status(404).json({ 
+                msg: "No users found"
+             }); // Handle no users case
+        }
+        res.json({
+            users: users
+        });
+    } catch (err) {
+        console.error("Error fetching users:", err);
+        res.status(500).json({ 
+            msg: "Internal Server Error"
+         }); // Handle database error
+    }
+});
 
 app.listen(3001);
