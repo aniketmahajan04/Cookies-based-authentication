@@ -17,8 +17,8 @@ const Todo = new Schema({
     userId: ObjectId
 });
 
-const userModel = mongoose.model("Users", User);
-const todoModel = mongoose.model("Todos", Todo);
+const userModel = mongoose.model("users", User);
+const todoModel = mongoose.model("todos", Todo);
 
 module.exports = {
     userModel: userModel,
