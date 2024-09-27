@@ -95,4 +95,11 @@ app.get("/users", auth, async function(req, res) {
     }
 });
 
+app.post("/logout", auth, function(req, res) {
+    res.clearCookie('token');
+    res.json({
+        msg: "Logout successfully"
+    });
+});
+
 app.listen(3001);
