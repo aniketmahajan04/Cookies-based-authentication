@@ -1,0 +1,1 @@
+Learning cookies-based authentication.
